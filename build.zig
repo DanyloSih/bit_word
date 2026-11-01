@@ -13,17 +13,17 @@ pub const Options = struct {
         };
     }
 
-    /// Create the `bit_tree` module in the caller's build graph.
+    /// Create the `bit_word` module in the caller's build graph.
     ///
     /// Intended for parent packages that want a single shared instance:
     /// ```zig
-    /// const bit_tree_mod = (@import("bit_tree").Options{
+    /// const bit_tree_mod = (@import("bit_word").Options{
     ///     .target = target,
     ///     .optimize = optimize,
     /// }).getModule(b);
     /// ```
     /// Uses `dependencyFromBuildZig` so source paths stay correct when
-    /// called from a parent build via `@import("bit_tree")`.
+    /// called from a parent build via `@import("bit_word")`.
     pub fn getModule(self: Options, b: *std.Build) *std.Build.Module {
         const target = self.target orelse b.standardTargetOptions(.{});
         const optimize = self.optimize orelse b.standardOptimizeOption(.{});
